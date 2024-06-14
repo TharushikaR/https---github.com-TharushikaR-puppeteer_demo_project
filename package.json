@@ -1,0 +1,34 @@
+{
+  "name": "puppeteer_demo_project",
+  "version": "1.0.0",
+  "description": "Puppeteer Demo Project for Practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TharushikaR/puppeteer_demo_project.git"
+  },
+  "keywords": [
+    "Puppeteer",
+    "Mocha",
+    "Chai",
+    "Automation",
+    "Testing"
+  ],
+  "author": "Tharushi Rathnayaka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TharushikaR/puppeteer_demo_project/issues"
+  },
+  "homepage": "https://github.com/TharushikaR/puppeteer_demo_project#readme",
+  "dependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.4.0",
+    "puppeteer": "^22.11.0"
+  },
+  "devDependencies": {
+    "prettier": "3.3.2"
+  }
+}
