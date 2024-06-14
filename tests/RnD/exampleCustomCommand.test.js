@@ -5,7 +5,7 @@ import {
 	getCountFromElement,
 	getTextFromElement,
 	shouldNotExist,
-} from '../../lib/helpers.js'
+} from '../../support/helpers.js'
 
 describe('RnD Example - Custom Command Test', () => {
 	let browser, page, context

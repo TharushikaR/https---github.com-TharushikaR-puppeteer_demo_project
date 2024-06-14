@@ -7,7 +7,8 @@
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests/RnD/example.test.js",
     "test:device": "node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests/RnD/device.test.js",
-    "test:cuscmd": "node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests/RnD/exampleCustomCommand.test.js"
+    "test:cuscmd": "node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests/RnD/exampleCustomCommand.test.js",
+    "test:e2e": "node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests/e2e/*.test.js"
   },
   "repository": {
     "type": "git",

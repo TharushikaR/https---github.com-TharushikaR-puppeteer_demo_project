@@ -1,0 +1,6 @@
+export const correctEmail='automationtesting1995@gmail.com'
+export const IncorrectEmail='test123@gmail.com'
+export const correctPswd='Password#ABCD@123'
+export const IncorrectPswd='Abc@123'
+export const ExpectedErrorMsgInvalidLogin='Invalid email or password'
+export const URLMyAccount='https://practicesoftwaretesting.com/#/account'
