@@ -4,8 +4,8 @@ import * as commandName from '../../support/helpers.js'
 import * as selectorName from '../../support/selectors.js'
 import * as testData from '../../support/data.js'
 
-describe('E2E Login Test', () => {
-	let browser, page, context, ActualErrorMsgInvalidLogin, client
+describe('E2E Login Test Cases', () => {
+	let browser, page, context, ActualErrorMsgInvalidLogin, client, errorMsg
 	before(async function () {
 		browser = await puppeteer.launch({
 			headless: false,
@@ -25,7 +25,7 @@ describe('E2E Login Test', () => {
 	})
 
 	beforeEach(async function () {
-		page.goto(selectorName.baseURL)
+		page.goto(testData.baseURL)
 	})
 
 	afterEach(async function () {
@@ -34,7 +34,7 @@ describe('E2E Login Test', () => {
 		await client.send('Network.clearBrowserCache')
 	})
 
-	it.skip('Login Test - Invalid Credentials (Invalid Email/Valid Password)', async function () {
+	it('Login - Invalid Credentials (Invalid Email/Valid Password)', async function () {
 		await commandName.clickElement(page, selectorName.linkSignIn)
 		await commandName.typeElement(
 			page,
@@ -58,7 +58,7 @@ describe('E2E Login Test', () => {
 		)
 	})
 
-	it.skip('Login Test - Invalid Credentials (Valid Email/Invalid Password)', async function () {
+	it('Login - Invalid Credentials (Valid Email/Invalid Password)', async function () {
 		await commandName.clickElement(page, selectorName.linkSignIn)
 		await commandName.typeElement(
 			page,
@@ -82,7 +82,7 @@ describe('E2E Login Test', () => {
 		)
 	})
 
-	it.skip('Login Test - Invalid Credentials (Invalid Email/Invalid Password)', async function () {
+	it('Login - Invalid Credentials (Invalid Email/Invalid Password)', async function () {
 		await commandName.clickElement(page, selectorName.linkSignIn)
 		await commandName.typeElement(
 			page,
@@ -106,17 +106,17 @@ describe('E2E Login Test', () => {
 		)
 	})
 
-	it.skip('Login Test - Valid Credentials (Valid Email/Valid Password)', async function () {
+	it('Login - Valid Credentials (Valid Email/Valid Password)', async function () {
 		await commandName.clickElement(page, selectorName.linkSignIn)
 		await commandName.typeElement(
 			page,
 			selectorName.txtEmail,
-			testData.correctEmail
+			testData.adminEmail
 		)
 		await commandName.typeElement(
 			page,
 			selectorName.txtPswd,
-			testData.correctPswd
+			testData.adminPswd
 		)
 		await commandName.clickElement(page, selectorName.btnLogin)
 
@@ -128,5 +128,55 @@ describe('E2E Login Test', () => {
 		)
 		expect(titlePage).to.be.a('string', textPageHeader)
 		expect(urlPage).to.be.a('string', testData.URLMyAccount)
+	})
+
+	it('Login - Both Fields are Empty', async function () {
+		await commandName.clickElement(page, selectorName.linkSignIn)
+		await commandName.clickElement(page, selectorName.btnLogin)
+
+		errorMsg = await commandName.getTextFromElement(
+			page,
+			selectorName.errorValidationEmptyUsername
+		)
+		expect(errorMsg).to.be.a('string', testData.errorMsgEmail)
+
+		errorMsg = await commandName.getTextFromElement(
+			page,
+			selectorName.errorValidationEmptyPswd
+		)
+		expect(errorMsg).to.be.a('string', testData.errorMsgPswd)
+	})
+
+	it('Login - Only Password Field Empty', async function () {
+		await commandName.clickElement(page, selectorName.linkSignIn)
+		await commandName.typeElement(
+			page,
+			selectorName.txtEmail,
+			testData.adminEmail
+		)
+
+		await commandName.clickElement(page, selectorName.btnLogin)
+
+		errorMsg = await commandName.getTextFromElement(
+			page,
+			selectorName.errorValidationEmptyPswd
+		)
+		expect(errorMsg).to.be.a('string', testData.errorMsgPswd)
+	})
+
+	it('Login - Only Username Field Empty', async function () {
+		await commandName.clickElement(page, selectorName.linkSignIn)
+		await commandName.typeElement(
+			page,
+			selectorName.txtPswd,
+			testData.adminPswd
+		)
+		await commandName.clickElement(page, selectorName.btnLogin)
+
+		errorMsg = await commandName.getTextFromElement(
+			page,
+			selectorName.errorValidationEmptyUsername
+		)
+		expect(errorMsg).to.be.a('string', testData.errorMsgEmail)
 	})
 })
