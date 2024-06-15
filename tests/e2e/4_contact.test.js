@@ -8,7 +8,7 @@ describe('E2E Contact Form Test Cases', () => {
 	let browser, page, context, client
 	before(async function () {
 		browser = await puppeteer.launch({
-			headless: false,
+			headless: true,
 			slowMo: 10,
 			devtools: false,
 			args: ['--start-maximized', '--incognito'],

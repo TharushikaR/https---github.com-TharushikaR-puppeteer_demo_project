@@ -9,7 +9,7 @@ describe('E2E Register Test Cases', () => {
 
 	before(async function () {
 		browser = await puppeteer.launch({
-			headless: false,
+			headless: true,
 			slowMo: 20,
 			devtools: false,
 			args: ['--start-maximized', '--incognito'],
