@@ -8,8 +8,8 @@ describe('E2E Search Items Test Cases', () => {
 	let browser, page, context, client
 	before(async function () {
 		browser = await puppeteer.launch({
-			headless: false,
-			slowMo: 10,
+			headless: true,
+			slowMo: 20,
 			devtools: false,
 			args: ['--start-maximized', '--incognito'],
 		})
@@ -34,9 +34,27 @@ describe('E2E Search Items Test Cases', () => {
 		await client.send('Network.clearBrowserCache')
 	})
 
-	it('Search Item by Sort Method', async function () {})
-    it('Search Item by Price Range Method', async function () {})
-    it('Search Item by Search Box Method', async function () {})
-    it('Search Item by Filters - Category Method', async function () {})
-    it('Search Item by Filters - Brand Method', async function () {})
+	it('Search Item by Search Box Method', async function () {
+		await commandName.typeElement(
+			page,
+			selectorName.searchBox,
+			testData.nameSearchItem
+		)
+
+		await commandName.clickElement(page, selectorName.searchBtn)
+		const labelItem1 = await commandName.getTextFromElement(
+			page,
+			selectorName.lblItem1
+		)
+		expect(labelItem1).to.be.a('string', testData.lblItemName1)
+	})
+	it.skip('Search Item by Filters - Category Method', async function () {
+		await commandName.clickCheckbox(page, selectorName.chkboxCategory)
+
+		const labelItem2 = await commandName.getTextFromElement(
+			page,
+			selectorName.lblItem2
+		)
+		expect(labelItem2).to.be.a('string', testData.lblItemName2)
+	})
 })

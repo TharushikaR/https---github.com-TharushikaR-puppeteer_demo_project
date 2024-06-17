@@ -17,17 +17,22 @@ export const RegUPostcode = '12345'
 export const RegUCity = 'City'
 export const RegUState = 'State'
 export const RegUCountry = 'LK'
-export const SubjectContact='customer-service'
+export const SubjectContact = 'customer-service'
 export const RegUPhone = '1234567890'
 export const correctEmail = randomData.generateRandomEmail()
 export const correctPswd = 'Password#ABCD@123'
-export const testContactMsg = 'Test Message using Puppeteer Automation. Test Message using Puppeteer Automation.'
+export const testContactMsg =
+	'Test Message using Puppeteer Automation. Test Message using Puppeteer Automation.'
 
 export const adminEmail = `admin@practicesoftwaretesting.com`
 export const adminPswd = 'welcome01'
 
 export const IncorrectEmail = 'test123@gmail.com'
 export const IncorrectPswd = 'Abc@123'
+
+export const nameSearchItem = 'Cutter'
+export const lblItemName1 = ` Bolt Cutters `
+export const lblItemName2 = ` Hammer `
 
 export const ExpectedErrorMsgInvalidLogin = 'Invalid email or password'
 export const errorMsgFName = ` First name is required `
