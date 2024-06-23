@@ -5,6 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "test:perf": "node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests/RnD/performance.test.js",
+    "test:access": "node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests/RnD/accessibility.test.js",
+    "test:geolocation": "node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests/RnD/faking_geo_location.test.js",
+    "test:pdf": "node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests/RnD/generate_pdf.test.js",
+    "test:screenshot": "node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests/RnD/generate_fullpg_ss.test.js",
     "test": "node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests/RnD/example.test.js",
     "test:device": "node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests/RnD/device.test.js",
     "test:cuscmd": "node ./node_modules/mocha/bin/mocha --timeout=30000 ./tests/RnD/exampleCustomCommand.test.js",
